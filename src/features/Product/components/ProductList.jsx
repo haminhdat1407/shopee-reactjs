@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
+import './style.scss';
 
 ProductList.propTypes = {
   data: PropTypes.array,
@@ -11,12 +12,12 @@ ProductList.defaultProps = {
 };
 function ProductList({ data }) {
   return (
-    <div>
-      {/* {data.map((product) => (
-        <li key={product.id}>
+    <div className="row">
+      {data.map((product) => (
+        <div className="col" key={product.id}>
           <Product product={product} />
-        </li>
-      ))} */}
+        </div>
+      ))}
     </div>
   );
 }

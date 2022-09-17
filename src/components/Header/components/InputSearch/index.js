@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './inputsearch.scss';
+import Cart from '../Cart';
 
 InputSearch.propTypes = {};
 
@@ -8,8 +9,8 @@ function InputSearch(props) {
   return (
     <div className="header-input">
       <div className="header__logo">
-        <a href="/" class="header__logo-link">
-          <svg class="header__logo-img" viewBox="0 0 192 65">
+        <a href="/" className="header__logo-link">
+          <svg className="header__logo-img" viewBox="0 0 192 65">
             <g fill-rule="evenodd">
               <path
                 fill="#fff"
@@ -31,11 +32,7 @@ function InputSearch(props) {
           <i className="header__search-btn-icon fas fa-search"></i>
         </button>
       </div>
-      <div className="header__cart">
-        <div className="header__cart-wrap">
-          <i className="header__cart-icon fas fa-shopping-cart"></i>
-        </div>
-      </div>
+      <Cart />
     </div>
   );
 }
