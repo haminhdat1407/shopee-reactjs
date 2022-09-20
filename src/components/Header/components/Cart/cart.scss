@@ -54,8 +54,9 @@
   background-color: #f8f8f8;
 }
 .header__cart-img {
-  width: 42px;
-  height: 43px;
+  // width: 42px;
+  // height: 43px;
+  width: 20%;
   margin: 12px;
   border: 1px solid #e8e8e8;
 }
@@ -150,7 +151,6 @@
 
 .header__cart-no-cart-img {
   width: 54%;
-  display: none;
 }
 
 .header__cart-list-no-cart-msg {
@@ -171,4 +171,39 @@
   border: 2px solid #ee4d2d;
   background-color: var(--white-color);
   color: var(--primary-color);
+}
+// Button style
+.btn {
+  min-width: 124px;
+  height: 36px;
+  text-decoration: none;
+  border: none;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  padding: 0 12px;
+  outline: none;
+  cursor: pointer;
+  color: var(--text-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6rem;
+  background-color: var(--white-color);
+}
+.btn.btn-normal:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.btn.btn--size-s {
+  height: 32px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+.btn.btn--primary {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+.btn.btn--disabled {
+  color: #949494;
+  cursor: default;
+  background-color: #c3c3c3;
 }

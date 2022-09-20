@@ -1,13 +1,25 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { convertPrice } from '../../utils/common';
+import { addToCart } from '../Cart/cartSlice';
 import './style.scss';
 
 function ProductDetail({ data }) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const actionAddToCart = addToCart({
+      data,
+    });
+    dispatch(actionAddToCart);
+  };
+
   return (
     <div>
       <div className="product ">
         <div className="product-left ">
           <div className="product-detail-img">
-            <img src={data.image} alt={data.title} width="100%" />
+            <img className="img" src={data.image} alt={data.title} width="100%" />
           </div>
         </div>
         <div className="product-right ">
@@ -18,13 +30,15 @@ function ProductDetail({ data }) {
             </div>
             <div className="product-detail-rating-count">{data.rating?.count} Đã bán</div>
           </div>
-          <div className="product-detail-price">{data.price} $</div>
+          <div className="product-detail-price">{convertPrice(data.price)}</div>
           <div className="amount">
-            <span>Số lượng</span>
+            <span>Số lượng: </span>
             <span>3000</span>
           </div>
           <div className="buy-product">
-            <button className="btn-buy"> Mua ngay</button>
+            <button className="btn-buy" onClick={handleAddToCart}>
+              Mua ngay
+            </button>
           </div>
         </div>
       </div>

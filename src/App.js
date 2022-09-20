@@ -7,6 +7,8 @@ import Auth from './features/Auth';
 import CartFeature from './features/Cart';
 import ProductFeature from './features/Product';
 import './App.css';
+import LoginForm from './features/Auth/components/LoginForm';
+import RegisterForm from './features/Auth/components/RegisterForm';
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
       <div className="footer">
         <Footer />
       </div>
+      {/* <RegisterForm /> */}
     </div>
   );
 }

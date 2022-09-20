@@ -15,6 +15,12 @@
 }
 .product-detail-img {
   width: 300px;
+  height: 300px;
+}
+.img {
+  object-fit: contain;
+  width: 100%;
+  height: inherit;
 }
 .product-detail-name {
   font-size: 2.4rem;
@@ -75,4 +81,7 @@
   background-color: rgba(0, 0, 0, 0.02);
 }
 .inf-des {
+  font-size: 1.4rem;
+  padding: 20px 10px;
+  line-height: 25px;
 }

@@ -20,7 +20,6 @@ function DetailPage(props) {
       (async () => {
         const data = await productApi.getSingleProduct(idProduct);
         setDetail(data);
-        console.log(data);
       })();
     } catch (error) {
       console.log('Failed to fetch product list:', error);

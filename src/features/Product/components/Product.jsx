@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
+import { convertPrice } from '../../../utils/common';
 
 Product.propTypes = {
   product: PropTypes.object,
@@ -22,7 +23,7 @@ function Product({ product }) {
       <div className="product-item__title">{product.title}</div>
       <div className="product-item__price">
         <div className="product-item__price-old">10000$</div>
-        <div className="product-item__price-current">{product.price}$</div>
+        <div className="product-item__price-current">{convertPrice(product.price)}</div>
       </div>
       <div className="product-item__action">
         <span class="product-item__rating">Đánh giá {product.rating.rate} </span>

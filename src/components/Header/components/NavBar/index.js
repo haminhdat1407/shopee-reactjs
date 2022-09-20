@@ -1,17 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import LoginForm from '../../../../features/Auth/components/LoginForm';
 import './navbar.scss';
 
 NavBar.propTypes = {};
 
 function NavBar(props) {
+  const [showForm, setShowForm] = useState(false);
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
   return (
     <div className="header__navbar">
       <ul className="header__navbar-list">
         <li className="header__navbar-item header__navbar-item--separate "> Kênh người bán</li>
-        {/* <span> Kênh người bán</span>
-          <span> Tải ứng dụng</span>
-          <span> Kết nối</span> */}
+
         <li className="header__navbar-item header__navbar-item--separate "> Tải ứng dụng</li>
         <li className="header__navbar-item ">
           Kết nối
@@ -48,8 +50,11 @@ function NavBar(props) {
           Tiếng Việt
         </li>
         <li className="header__navbar-item header__navbar-item--separate">Đăng kí</li>
-        <li className="header__navbar-item">Đăng nhập</li>
+        <li className="header__navbar-item" onClick={handleShowForm}>
+          Đăng nhập
+        </li>
       </ul>
+      {showForm && <LoginForm />}
     </div>
   );
 }
