@@ -49,16 +49,14 @@
 .header__cart-item {
   display: flex;
   align-items: center;
+  border-bottom: 0.2px solid var(--border-color);
 }
 .header__cart-item:hover {
   background-color: #f8f8f8;
 }
 .header__cart-img {
-  // width: 42px;
-  // height: 43px;
   width: 20%;
   margin: 12px;
-  border: 1px solid #e8e8e8;
 }
 
 .header__cart-item-info {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { convertPrice } from '../../utils/common';
 import { addToCart } from '../Cart/cartSlice';
+import CountProduct from '../Product/components/Count';
 import './style.scss';
 
 function ProductDetail({ data }) {
@@ -11,6 +12,8 @@ function ProductDetail({ data }) {
     const actionAddToCart = addToCart({
       data,
     });
+    console.log(data);
+
     dispatch(actionAddToCart);
   };
 
@@ -23,21 +26,24 @@ function ProductDetail({ data }) {
           </div>
         </div>
         <div className="product-right ">
-          <div className="product-detail-name">{data.title}</div>
-          <div className="product-detail-rating">
-            <div className="product-detail-rating-rate product-detail-rating-separate ">
+          <div className="mgn product-detail-name">{data.title}</div>
+          <div className="mgn product-detail-rating">
+            <div className=" product-detail-rating-rate product-detail-rating-separate ">
               {data.rating?.rate} Đánh giá
             </div>
             <div className="product-detail-rating-count">{data.rating?.count} Đã bán</div>
           </div>
-          <div className="product-detail-price">{convertPrice(data.price)}</div>
-          <div className="amount">
+          <div className="mgn product-detail-price">{convertPrice(data.price)}</div>
+          {/* <div className="mgn product-voucher"> Mã giảm giá của shop</div> */}
+          <div className=" mgn amount">
             <span>Số lượng: </span>
-            <span>3000</span>
+            <div>
+              <CountProduct />
+            </div>
           </div>
-          <div className="buy-product">
+          <div className=" mgn buy-product">
             <button className="btn-buy" onClick={handleAddToCart}>
-              Mua ngay
+              Mua Ngay
             </button>
           </div>
         </div>

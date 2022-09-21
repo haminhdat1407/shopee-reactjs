@@ -9,5 +9,9 @@ const productApi = {
     const url = `https://fakestoreapi.com/products/${idProduct}`;
     return axiosClient.get(url);
   },
+  getAllCategory() {
+    const url = 'https://fakestoreapi.com/products/categories';
+    return axiosClient.get(url);
+  },
 };
 export default productApi;

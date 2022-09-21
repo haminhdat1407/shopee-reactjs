@@ -23,17 +23,18 @@
   height: inherit;
 }
 .product-detail-name {
+  line-height: 2.8rem;
   font-size: 2.4rem;
   font-weight: 400;
   color: var(--text-color);
-  line-height: 1.8rem;
-  height: 3.6rem;
+  height: fit-content;
 }
 .product-detail-rating {
   display: flex;
-  font-size: 1.4rem;
+  margin-top: 30px;
+  font-size: 1.6rem;
   color: #767676;
-  height: 2.6rem;
+  padding: 5px 0;
 }
 .product-detail-rating-rate {
   position: relative;
@@ -43,9 +44,9 @@
   display: block;
   position: absolute;
   border-left: 1px solid #767676;
-  height: 17px;
+  height: 20px;
   right: -9px;
-  top: 36%;
+  top: 54%;
   transform: translateY(-50%);
 }
 .product-detail-rating-count {
@@ -58,8 +59,10 @@
   color: var(--primary-color);
 }
 .amount {
+  display: flex;
   padding: 15px 0;
   font-size: 2rem;
+  align-items: center;
 }
 .buy-product {
 }
@@ -79,9 +82,13 @@
   font-size: 2.4rem;
   padding: 20px 10px;
   background-color: rgba(0, 0, 0, 0.02);
+  text-decoration: underline;
 }
 .inf-des {
   font-size: 1.4rem;
   padding: 20px 10px;
   line-height: 25px;
+}
+.mgn {
+  margin: 10px 0;
 }
