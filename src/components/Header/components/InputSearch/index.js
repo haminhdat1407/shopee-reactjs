@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './inputsearch.scss';
 import Cart from '../Cart';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProductList } from '../../../../pages/productSlice';
 
 InputSearch.propTypes = {};
 
 function InputSearch(props) {
+  const [searchName, setSearchName] = useState('');
+  const dispatch = useDispatch();
+  const typingTimeoutRef = useRef(null);
+  const listProduct = useSelector((state) => state.productReducer.productList);
+
+  const handleSearchName = (e) => {
+    const value = e.target.value;
+    setSearchName(value);
+
+    /* Debounce  */
+    // if (typingTimeoutRef.current) {
+    //   clearTimeout(typingTimeoutRef.current);
+    // }
+    // typingTimeoutRef.current = setTimeout(() => {
+    //   setSearchName(value);
+    // }, 1000);
+  };
+
+  /* khi nhập input thì sẽ filter  */
+  useEffect(() => {
+    // const listProductFilter = listProduct.filter((product) => {
+    //   return product.title.includes(searchName);
+    // });
+    // dispatch(setProductList(listProductFilter));
+
+    if (searchName === '') {
+      console.log('20 ỉtems');
+      dispatch(setProductList(listProduct));
+    }
+  }, [searchName]);
+
+  /* khi click button search thì sẽ filter  */
+  const handleSearch = () => {
+    const listProductFilter = listProduct.filter((product) => {
+      return product.title.includes(searchName);
+    });
+    dispatch(setProductList(listProductFilter));
+  };
   return (
     <div className="header-input">
       <div className="header__logo">
@@ -26,9 +66,10 @@ function InputSearch(props) {
             type="text"
             className="header__search-input"
             placeholder="Nhập để tìm kiếm sản phẩm..."
+            onChange={handleSearchName}
           />
         </div>
-        <button className="header__search-btn">
+        <button className="header__search-btn" onClick={handleSearch}>
           <i className="header__search-btn-icon fas fa-search"></i>
         </button>
       </div>

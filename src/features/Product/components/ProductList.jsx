@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
 import './style.scss';
+import { useSelector } from 'react-redux';
 
-ProductList.propTypes = {
-  data: PropTypes.array,
-};
+function ProductList() {
+  const data = useSelector((state) => state.productReducer.productList);
 
-ProductList.defaultProps = {
-  data: [],
-};
-function ProductList({ data }) {
   return (
     <div className="row">
       {data.map((product) => (

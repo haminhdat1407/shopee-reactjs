@@ -13,7 +13,6 @@ function Cart(props) {
     navigate('/cart');
   };
   const listItemCart = useSelector((state) => state.cartReducer.cartItem);
-  console.log(listItemCart.length);
 
   return (
     <div className="header__cart" onClick={handleCart}>
@@ -49,7 +48,7 @@ function Cart(props) {
                             {convertPrice(item.data?.price)}
                           </span>
                           <span className="header__cart-item-multiply">x</span>
-                          <span className="header__cart-item-qnt">2</span>
+                          <span className="header__cart-item-qnt">{item.quantity}</span>
                         </div>
                       </div>
                       <div className="header__cart-item-body">

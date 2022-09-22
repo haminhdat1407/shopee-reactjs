@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './style.scss';
 import { useSelector } from 'react-redux';
-import { convertPrice } from '../../utils/common';
 import { useNavigate } from 'react-router-dom';
-import CountProduct from '../Product/components/Count';
+import { convertPrice } from '../../utils/common';
+import QuantityProduct from '../Product/components/Quantity';
+import './style.scss';
 
 CartFeature.propTypes = {};
 
@@ -15,8 +14,6 @@ function CartFeature(props) {
     navigate('/');
   };
   const listItemCart = useSelector((state) => state.cartReducer.cartItem);
-  console.log(listItemCart);
-
   return (
     <div className="gird">
       {listItemCart?.length === 0 ? (
@@ -28,7 +25,7 @@ function CartFeature(props) {
           />
           <div className="container-no-cart-text">Giỏ hàng của bạn còn trống </div>
           <button className="btn-buy" onClick={handleToProduct}>
-            Mua Ngay
+            Tiếp Tục Mua Sắm
           </button>
         </div>
       ) : (
@@ -71,7 +68,7 @@ function CartFeature(props) {
                   <div className="container-right">
                     <div className="container-price">{convertPrice(item.data?.price)}</div>
                     <div className="container-count">
-                      <CountProduct />
+                      <QuantityProduct />
                     </div>
                     <div className="container-amount">150.000</div>
                     <div className="container-delete">

@@ -2,17 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { convertPrice } from '../../utils/common';
 import { addToCart } from '../Cart/cartSlice';
-import CountProduct from '../Product/components/Count';
+import QuantityProduct from '../Product/components/Quantity';
 import './style.scss';
 
 function ProductDetail({ data }) {
   const dispatch = useDispatch();
+  const quantity = useSelector((state) => state.cartReducer.quantity);
 
   const handleAddToCart = () => {
     const actionAddToCart = addToCart({
+      id: data.id,
       data,
+      quantity,
     });
-    console.log(data);
 
     dispatch(actionAddToCart);
   };
@@ -38,7 +40,7 @@ function ProductDetail({ data }) {
           <div className=" mgn amount">
             <span>Số lượng: </span>
             <div>
-              <CountProduct />
+              <QuantityProduct />
             </div>
           </div>
           <div className=" mgn buy-product">

@@ -13,5 +13,9 @@ const productApi = {
     const url = 'https://fakestoreapi.com/products/categories';
     return axiosClient.get(url);
   },
+  getProductByCategory(categoryName) {
+    const url = `https://fakestoreapi.com/products/category/${categoryName}`;
+    return axiosClient.get(url);
+  },
 };
 export default productApi;

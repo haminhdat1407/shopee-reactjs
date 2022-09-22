@@ -9,6 +9,7 @@ Product.propTypes = {
 };
 
 function Product({ product }) {
+  console.log(product);
   let navigate = useNavigate();
 
   const handleDetail = (idProduct) => {
@@ -26,8 +27,8 @@ function Product({ product }) {
         <div className="product-item__price-current">{convertPrice(product.price)}</div>
       </div>
       <div className="product-item__action">
-        <span class="product-item__rating">Đánh giá {product.rating.rate} </span>
-        <span class="product-item__sold">Đã bán {product.rating.count} </span>
+        <span class="product-item__rating">Đánh giá {product.rating?.rate} </span>
+        <span class="product-item__sold">Đã bán {product.rating?.count} </span>
       </div>
       <div className="product-item__favourite">
         <i className="fas fa-check"></i>

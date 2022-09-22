@@ -14,6 +14,11 @@ const arrImg = [
 function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const autoNext = useRef(null);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     autoNext.current.click();
+  //   }, 3000);
+  // }, []);
   // const timmer = setTimeout(() => {
   //   autoNext.current.click();
   // }, 5000);
