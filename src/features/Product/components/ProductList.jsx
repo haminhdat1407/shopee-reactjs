@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Product from './Product';
 import './style.scss';
 import { useSelector } from 'react-redux';

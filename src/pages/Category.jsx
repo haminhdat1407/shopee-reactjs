@@ -16,13 +16,12 @@ function Category(props) {
     try {
       (async () => {
         const data = await productApi.getProductByCategory(categoryName);
-        setCategory(data);
+        setCategory(data.products);
       })();
     } catch (error) {
       console.log('Failed to fetch product list:', error);
     }
   }, []);
-  console.log(category);
   return (
     <div className="grid ">
       <div className="category-name">{categoryName}</div>

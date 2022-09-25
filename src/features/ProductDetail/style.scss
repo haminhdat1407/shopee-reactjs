@@ -28,6 +28,7 @@
   font-weight: 400;
   color: var(--text-color);
   height: fit-content;
+  text-transform: capitalize;
 }
 .product-detail-rating {
   display: flex;
@@ -53,11 +54,24 @@
   margin-left: 15px;
 }
 .product-detail-price {
+  display: flex;
+  padding: 17px;
   background-color: #fafafa;
-  padding: 10px;
   font-size: 3rem;
-  color: var(--primary-color);
+
+  .product-detail-price__old {
+    font-size: 2rem;
+    margin-left: 10px;
+    color: #666;
+    text-decoration: line-through;
+  }
+  .product-detail-price__current {
+    color: var(--primary-color);
+    margin-left: 10px;
+    flex-wrap: wrap;
+  }
 }
+
 .amount {
   display: flex;
   padding: 15px 0;
@@ -85,7 +99,7 @@
   text-decoration: underline;
 }
 .inf-des {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 20px 10px;
   line-height: 25px;
 }

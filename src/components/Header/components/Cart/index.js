@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { convertPrice } from '../../../../utils/common';
+import { convertPrice, convertPriceDisCount } from '../../../../utils/common';
 import './cart.scss';
 
 Cart.propTypes = {};
@@ -31,7 +31,7 @@ function Cart(props) {
                 alt=""
                 className="header__cart-no-cart-img"
               />
-              <span className="header__cart-list-no-cart-msg">Chưa có sản phẩm</span>
+              <div className="header__cart-list-no-cart-msg">Chưa có sản phẩm</div>
             </>
           ) : (
             <div>
@@ -39,13 +39,13 @@ function Cart(props) {
                 <ul className="header__cart-list-item">
                   {/* <!-- Cart item --> */}
                   <li className="header__cart-item">
-                    <img src={item.data?.image} alt="" className="header__cart-img" />
+                    <img src={item.data?.thumbnail} alt="" className="header__cart-img" />
                     <div className="header__cart-item-info">
                       <div className="header__cart-item-head">
                         <h5 className="header__cart-item-name">{item.data?.title}</h5>
                         <div className="header__cart-item-price-wrap">
                           <span className="header__cart-item-price">
-                            {convertPrice(item.data?.price)}
+                            {convertPriceDisCount(item.data.discountPercentage, item.data.price)}
                           </span>
                           <span className="header__cart-item-multiply">x</span>
                           <span className="header__cart-item-qnt">{item.quantity}</span>

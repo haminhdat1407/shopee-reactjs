@@ -33,12 +33,12 @@ function QuantityProduct() {
     <>
       <div className="count-product">
         <button className="btn-count btn-decrement" onClick={handleDecrement}>
-          <i class="fa-solid fa-minus"></i>
+          <i className="fa-solid fa-minus"></i>
         </button>
         <input className=" btn-count input-count" type="text" value={inputValue} />
 
         <button className="btn-count btn-increment" onClick={handleIncrement}>
-          <i class="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-plus"></i>
         </button>
       </div>
     </>

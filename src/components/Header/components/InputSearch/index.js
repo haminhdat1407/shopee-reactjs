@@ -4,47 +4,40 @@ import './inputsearch.scss';
 import Cart from '../Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProductList } from '../../../../pages/productSlice';
+import productApi from '../../../../api/productApi';
 
 InputSearch.propTypes = {};
 
 function InputSearch(props) {
   const [searchName, setSearchName] = useState('');
   const dispatch = useDispatch();
-  const typingTimeoutRef = useRef(null);
-  const listProduct = useSelector((state) => state.productReducer.productList);
+  const searchButtonRef = useRef();
 
   const handleSearchName = (e) => {
     const value = e.target.value;
-    setSearchName(value);
-
-    /* Debounce  */
-    // if (typingTimeoutRef.current) {
-    //   clearTimeout(typingTimeoutRef.current);
-    // }
-    // typingTimeoutRef.current = setTimeout(() => {
-    //   setSearchName(value);
-    // }, 1000);
+    //remove khoang trang trong chuoi
+    setSearchName(value.trim());
   };
-
   /* khi nhập input thì sẽ filter  */
   useEffect(() => {
-    // const listProductFilter = listProduct.filter((product) => {
-    //   return product.title.includes(searchName);
-    // });
-    // dispatch(setProductList(listProductFilter));
-
-    if (searchName === '') {
-      console.log('20 ỉtems');
-      dispatch(setProductList(listProduct));
+    if (searchName === '' || searchName.length === 0) {
+      searchButtonRef.current.click();
     }
   }, [searchName]);
 
+  const getSearchProduct = async () => {
+    try {
+      const data = await productApi.getSearchProductByName(searchName);
+      dispatch(setProductList(data.products));
+      console.log(data.products);
+    } catch (error) {
+      console.log('Failed to fetch product list:', error);
+    }
+  };
+
   /* khi click button search thì sẽ filter  */
   const handleSearch = () => {
-    const listProductFilter = listProduct.filter((product) => {
-      return product.title.includes(searchName);
-    });
-    dispatch(setProductList(listProductFilter));
+    getSearchProduct();
   };
   return (
     <div className="header-input">
@@ -69,7 +62,7 @@ function InputSearch(props) {
             onChange={handleSearchName}
           />
         </div>
-        <button className="header__search-btn" onClick={handleSearch}>
+        <button className="header__search-btn" ref={searchButtonRef} onClick={handleSearch}>
           <i className="header__search-btn-icon fas fa-search"></i>
         </button>
       </div>

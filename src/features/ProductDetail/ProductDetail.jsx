@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { convertPrice } from '../../utils/common';
+import { convertPrice, convertPriceDisCount } from '../../utils/common';
 import { addToCart } from '../Cart/cartSlice';
 import QuantityProduct from '../Product/components/Quantity';
 import './style.scss';
 
 function ProductDetail({ data }) {
+  console.log(data);
   const dispatch = useDispatch();
   const quantity = useSelector((state) => state.cartReducer.quantity);
 
@@ -24,19 +25,23 @@ function ProductDetail({ data }) {
       <div className="product ">
         <div className="product-left ">
           <div className="product-detail-img">
-            <img className="img" src={data.image} alt={data.title} width="100%" />
+            <img className="img" src={data?.thumbnail} alt={data.title} width="100%" />
           </div>
         </div>
         <div className="product-right ">
           <div className="mgn product-detail-name">{data.title}</div>
           <div className="mgn product-detail-rating">
             <div className=" product-detail-rating-rate product-detail-rating-separate ">
-              {data.rating?.rate} Đánh giá
+              {data?.rating} Đánh giá
             </div>
-            <div className="product-detail-rating-count">{data.rating?.count} Đã bán</div>
+            <div className="product-detail-rating-count">{data.stock} Đã bán</div>
           </div>
-          <div className="mgn product-detail-price">{convertPrice(data.price)}</div>
-          {/* <div className="mgn product-voucher"> Mã giảm giá của shop</div> */}
+          <div className="mgn product-detail-price">
+            <div className="product-detail-price__old">{convertPrice(data.price)}</div>
+            <div className="product-detail-price__current">
+              {convertPriceDisCount(data.discountPercentage, data.price)}
+            </div>
+          </div>
           <div className=" mgn amount">
             <span>Số lượng: </span>
             <div>

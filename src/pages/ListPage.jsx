@@ -2,30 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import productApi from '../api/productApi';
 import Banner from '../components/Banner';
+import Pagination from '../features/Pagination';
 import FilterByCategory from '../features/Product/components/Filters/FilterByCategory';
 import ProductList from '../features/Product/components/ProductList';
-import { setProductList } from './productSlice';
+import { setProductList, setTotalProduct } from './productSlice';
 
 ListPage.propTypes = {};
 
 function ListPage(props) {
-  // const [productList, setProductList] = useState([]);
   const [category, setCategory] = useState([]);
   const dispatch = useDispatch();
+
   //get All product
-  useEffect(() => {
+  const getProductList = async () => {
     try {
-      (async () => {
-        const data = await productApi.getAll();
-        // setProductList(data);
-        dispatch(setProductList(data));
-      })();
+      const data = await productApi.getAll(12, 0);
+      console.log(data);
+      dispatch(setProductList(data.products));
+      dispatch(setTotalProduct(data.total));
     } catch (error) {
       console.log('Failed to fetch product list:', error);
     }
-  }, []);
+  };
+  getProductList();
 
-  //get all category
   useEffect(() => {
     try {
       (async () => {
@@ -42,6 +42,7 @@ function ListPage(props) {
       <Banner />
       <FilterByCategory data={category} />
       <ProductList />
+      <Pagination />
     </div>
   );
 }

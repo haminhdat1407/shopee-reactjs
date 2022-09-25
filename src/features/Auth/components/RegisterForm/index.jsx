@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './style.scss';
 
 RegisterForm.propTypes = {};
@@ -29,7 +28,7 @@ function RegisterForm(props) {
             </div>
             <div className="footer-form">
               <p>
-                Bạn Có Tài Khoản? <a href="#">Đăng nhập</a>
+                Bạn Có Tài Khoản? <span>Đăng nhập</span>
               </p>
             </div>
           </form>

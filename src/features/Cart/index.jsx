@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { convertPrice } from '../../utils/common';
+import { convertPriceDisCount, roundingPercentDiscount } from '../../utils/common';
 import QuantityProduct from '../Product/components/Quantity';
 import './style.scss';
 
@@ -61,12 +61,18 @@ function CartFeature(props) {
                       value="container-product"
                     />
                     <div className="image-product">
-                      <img className="img" src={item.data?.image} alt="img-product" />
+                      <img className="img" src={item.data?.thumbnail} alt="img-product" />
                     </div>
                     <div className="name-product">{item.data?.title}</div>
                   </div>
                   <div className="container-right">
-                    <div className="container-price">{convertPrice(item.data?.price)}</div>
+                    <div className="container-price">
+                      {' '}
+                      {convertPriceDisCount(
+                        roundingPercentDiscount(item.data?.discountPercentage),
+                        item.data?.price
+                      )}
+                    </div>
                     <div className="container-count">
                       <QuantityProduct />
                     </div>

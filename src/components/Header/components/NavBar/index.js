@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import LoginForm from '../../../../features/Auth/components/LoginForm';
+import RegisterForm from '../../../../features/Auth/components/RegisterForm';
 import './navbar.scss';
 
 NavBar.propTypes = {};
 
 function NavBar(props) {
   const [showForm, setShowForm] = useState(false);
+
+  const liElement = document.querySelector('.header-auth');
+  console.log(liElement);
   const handleShowForm = () => {
     setShowForm(true);
   };
@@ -49,8 +53,8 @@ function NavBar(props) {
           <i className=" header__navbar-icon  fa fa-thin fa-globe"></i>
           Tiếng Việt
         </li>
-        <li className="header__navbar-item header__navbar-item--separate">Đăng kí</li>
-        <li className="header__navbar-item" onClick={handleShowForm}>
+        <li className="header__navbar-item header__navbar-item--separate header-auth">Đăng kí</li>
+        <li className="header__navbar-item  header-auth" onClick={handleShowForm}>
           Đăng nhập
         </li>
       </ul>

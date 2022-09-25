@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './style.scss';
 
 LoginForm.propTypes = {};
@@ -28,7 +27,7 @@ function LoginForm(props) {
           </div>
           <div className="footer-form">
             <p>
-              Bạn Chưa Có Tài Khoản? <a href="#">Đăng Ký</a>
+              Bạn Chưa Có Tài Khoản? <span>Đăng Ký</span>
             </p>
           </div>
         </form>

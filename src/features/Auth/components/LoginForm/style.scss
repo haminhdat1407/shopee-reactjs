@@ -3,8 +3,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 9;
 }
+
 .form {
+  color: var(--back-color);
   background: var(--white-color);
   border-radius: 9px;
   padding: 20px;

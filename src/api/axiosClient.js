@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://fakestoreapi.com/products',
+  baseURL: 'https://dummyjson.com/products',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
 // interceptors
 // Add a request interceptor
 axiosClient.interceptors.request.use(

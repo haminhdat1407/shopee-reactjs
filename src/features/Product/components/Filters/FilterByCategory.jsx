@@ -6,10 +6,26 @@ FilterByCategory.propTypes = {};
 
 function FilterByCategory({ data }) {
   const imgDefault = [
-    '	https://cf.shopee.vn/file/978b9e4cb61c611aaaf58664fae133c5_tn',
-    '	https://cf.shopee.vn/file/8e71245b9659ea72c1b4e737be5cf42e_tn',
-    '	https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn',
+    'https://cf.shopee.vn/file/31234a27876fb89cd522d7e3db1ba5ca_tn',
+    'https://cf.shopee.vn/file/c3f3edfaa9f6dafc4825b77d8449999d_tn',
+    'https://dummyjson.com/image/i/products/13/thumbnail.webp',
+    '	https://dummyjson.com/image/i/products/19/thumbnail.jpg',
+    'https://i.imgur.com/FHSfriE.png',
+    'https://i.imgur.com/liKhipt.png',
+    'https://i.imgur.com/0LHNZsP.png',
+    'https://dummyjson.com/image/i/products/36/thumbnail.jpg',
     'https://cf.shopee.vn/file/75ea42f9eca124e9cb3cde744c060e4d_tn',
+    'https://cf.shopee.vn/file/48630b7c76a7b62bc070c9e227097847_tn',
+    'https://dummyjson.com/image/i/products/54/thumbnail.jpg',
+    'https://cf.shopee.vn/file/74ca517e1fa74dc4d974e5d03c3139de_tn',
+    'https://dummyjson.com/image/i/products/62/thumbnail.jpg',
+    'https://dummyjson.com/image/i/products/68/thumbnail.webp',
+    'https://cf.shopee.vn/file/fa6ada2555e8e51f369718bbc92ccc52_tn',
+    'https://dummyjson.com/image/i/products/78/thumbnail.jpg',
+    'https://dummyjson.com/image/i/products/84/thumbnail.jpg',
+    'https://dummyjson.com/image/i/products/86/thumbnail.jpg',
+    'https://cf.shopee.vn/file/3fb459e3449905545701b418e8220334_tn',
+    'https://dummyjson.com/image/i/products/97/thumbnail.jpg',
   ];
 
   const navigate = useNavigate();

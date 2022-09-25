@@ -148,14 +148,13 @@
 }
 
 .header__cart-no-cart-img {
-  width: 54%;
 }
 
 .header__cart-list-no-cart-msg {
-  display: none;
-  font-size: 1.4rem;
-  margin-top: 14px;
+  font-size: 1.6rem;
   color: var(--text-color);
+  padding: 28px;
+  text-transform: capitalize;
 }
 
 .header__cart-notice {
