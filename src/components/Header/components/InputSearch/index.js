@@ -29,7 +29,6 @@ function InputSearch(props) {
     try {
       const data = await productApi.getSearchProductByName(searchName);
       dispatch(setProductList(data.products));
-      console.log(data.products);
     } catch (error) {
       console.log('Failed to fetch product list:', error);
     }

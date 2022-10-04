@@ -24,10 +24,11 @@ function Product({ product }) {
       <div className="product-item__price">
         <div className="product-item__price-old">{convertPrice(product.price)}</div>
         <div className="product-item__price-current">
-          {convertPriceDisCount(
+          {/* {convertPriceDisCount(
             roundingPercentDiscount(product?.discountPercentage),
             product.price
-          )}
+          )} */}
+          {convertPrice(convertPriceDisCount(product?.discountPercentage, product.price))}
         </div>
       </div>
       <div className="product-item__action">

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { convertPrice, convertPriceDisCount } from '../../utils/common';
 import { addToCart } from '../Cart/cartSlice';
 import QuantityProduct from '../Product/components/Quantity';
+import ToastAddToCart from '../Toast';
 import './style.scss';
 
 function ProductDetail({ data }) {
-  console.log(data);
   const dispatch = useDispatch();
   const quantity = useSelector((state) => state.cartReducer.quantity);
+  const [showToast, setShowToast] = useState(false);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (image == null) {
+      setImage(data?.thumbnail);
+    }
+  }, [image, data]);
 
   const handleAddToCart = () => {
     const actionAddToCart = addToCart({
@@ -16,8 +24,10 @@ function ProductDetail({ data }) {
       data,
       quantity,
     });
-
     dispatch(actionAddToCart);
+    // const show = setTimeout(() => {
+    //   setShowToast(true);
+    // }, 1000);
   };
 
   return (
@@ -25,7 +35,21 @@ function ProductDetail({ data }) {
       <div className="product ">
         <div className="product-left ">
           <div className="product-detail-img">
-            <img className="img" src={data?.thumbnail} alt={data.title} width="100%" />
+            <img className="img__product" src={image} alt={data?.title} width="100%" />
+          </div>
+          <div className="product-detail-img-small">
+            {data.images?.map((item, index) => (
+              <img
+                className={` img-small ${image === item ? 'active' : ''}`}
+                src={item}
+                key={index}
+                alt={item.title}
+                width="100%"
+                onMouseOver={() => {
+                  setImage(item);
+                }}
+              />
+            ))}
           </div>
         </div>
         <div className="product-right ">
@@ -39,7 +63,7 @@ function ProductDetail({ data }) {
           <div className="mgn product-detail-price">
             <div className="product-detail-price__old">{convertPrice(data.price)}</div>
             <div className="product-detail-price__current">
-              {convertPriceDisCount(data.discountPercentage, data.price)}
+              {convertPrice(convertPriceDisCount(data?.discountPercentage, data?.price))}
             </div>
           </div>
           <div className=" mgn amount">
@@ -59,6 +83,7 @@ function ProductDetail({ data }) {
         <div className="inf-detail"> Thông tin chi tiết</div>
         <div className="inf-des">{data.description}</div>
       </div>
+      {showToast && <ToastAddToCart />}
     </div>
   );
 }

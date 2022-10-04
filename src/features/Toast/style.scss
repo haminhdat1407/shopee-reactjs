@@ -1,0 +1,20 @@
+.container-toast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  width: 30%;
+  height: 30%;
+  background-color: aqua;
+  text-align: center;
+}
+.icon-toast {
+  font-size: 7.6rem;
+  padding: 48px 0px;
+}
+.test-toast {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  color: var(--white-color);
+}

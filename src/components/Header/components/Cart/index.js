@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { removeFromCart } from '../../../../features/Cart/cartSlice';
 import { convertPrice, convertPriceDisCount } from '../../../../utils/common';
 import './cart.scss';
 
@@ -8,12 +9,16 @@ Cart.propTypes = {};
 
 function Cart(props) {
   let navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleCart = () => {
     navigate('/cart');
   };
   const listItemCart = useSelector((state) => state.cartReducer.cartItem);
-
+  const handleDeleteCart = (item) => {
+    console.log(item.id);
+    const actionDeleteCart = removeFromCart({ id: item.id });
+    dispatch(actionDeleteCart);
+  };
   return (
     <div className="header__cart" onClick={handleCart}>
       <div className="header__cart-wrap">
@@ -36,7 +41,7 @@ function Cart(props) {
           ) : (
             <div>
               {listItemCart.map((item) => (
-                <ul className="header__cart-list-item">
+                <ul className="header__cart-list-item" key={item.id}>
                   {/* <!-- Cart item --> */}
                   <li className="header__cart-item">
                     <img src={item.data?.thumbnail} alt="" className="header__cart-img" />
@@ -45,7 +50,9 @@ function Cart(props) {
                         <h5 className="header__cart-item-name">{item.data?.title}</h5>
                         <div className="header__cart-item-price-wrap">
                           <span className="header__cart-item-price">
-                            {convertPriceDisCount(item.data.discountPercentage, item.data.price)}
+                            {convertPrice(
+                              convertPriceDisCount(item.data?.discountPercentage, item.data?.price)
+                            )}
                           </span>
                           <span className="header__cart-item-multiply">x</span>
                           <span className="header__cart-item-qnt">{item.quantity}</span>
@@ -55,7 +62,12 @@ function Cart(props) {
                         <span className="header__cart-item-description">
                           Phân loại: {item.data?.category}
                         </span>
-                        <span className="header__cart-item-remove">Xóa</span>
+                        <span
+                          className="header__cart-item-remove"
+                          onClick={() => handleDeleteCart(item)}
+                        >
+                          Xóa
+                        </span>
                       </div>
                     </div>
                   </li>

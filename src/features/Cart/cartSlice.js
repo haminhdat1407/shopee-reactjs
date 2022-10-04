@@ -15,17 +15,20 @@ const cartSlice = createSlice({
         return current(x).id === newItem.data.id;
       });
       if (index >= 0) {
-        //inscrease quantity
         state.cartItem[index].quantity += newItem.quantity;
       } else {
-        //add to cart
         state.cartItem.push(newItem);
       }
     },
 
     setQuantity(state, action) {
-      const { id, quantity } = action.payload;
+      const { quantity } = action.payload;
       state.quantity = quantity;
+    },
+
+    removeFromCart(state, action) {
+      const idNeedToRemove = state.cartItem.filter((cartItem) => cartItem.id !== action.payload.id);
+      state.cartItem = idNeedToRemove;
     },
   },
 });

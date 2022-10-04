@@ -22,6 +22,10 @@ function Banner() {
   // const timmer = setTimeout(() => {
   //   autoNext.current.click();
   // }, 5000);
+  // setInterval(() => {
+  //   setCurrentSlide(currentSlide + 1);
+  //   if (arrImg.length - 1 === currentSlide) setCurrentSlide(0);
+  // }, 3000);
 
   const handleClickNextSlide = () => {
     setCurrentSlide(currentSlide + 1);

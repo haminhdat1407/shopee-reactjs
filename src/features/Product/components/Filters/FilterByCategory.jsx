@@ -9,7 +9,7 @@ function FilterByCategory({ data }) {
     'https://cf.shopee.vn/file/31234a27876fb89cd522d7e3db1ba5ca_tn',
     'https://cf.shopee.vn/file/c3f3edfaa9f6dafc4825b77d8449999d_tn',
     'https://dummyjson.com/image/i/products/13/thumbnail.webp',
-    '	https://dummyjson.com/image/i/products/19/thumbnail.jpg',
+    'https://dummyjson.com/image/i/products/19/thumbnail.jpg',
     'https://i.imgur.com/FHSfriE.png',
     'https://i.imgur.com/liKhipt.png',
     'https://i.imgur.com/0LHNZsP.png',

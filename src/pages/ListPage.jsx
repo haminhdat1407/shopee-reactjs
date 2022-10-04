@@ -17,7 +17,7 @@ function ListPage(props) {
   const getProductList = async () => {
     try {
       const data = await productApi.getAll(12, 0);
-      console.log(data);
+      // console.log(data);
       dispatch(setProductList(data.products));
       dispatch(setTotalProduct(data.total));
     } catch (error) {
@@ -26,6 +26,7 @@ function ListPage(props) {
   };
   getProductList();
 
+  //get All category
   useEffect(() => {
     try {
       (async () => {

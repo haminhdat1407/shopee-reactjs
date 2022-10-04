@@ -31,7 +31,6 @@ function Pagination(props) {
   useEffect(() => {
     const productByPagination = productApi.getAll(12, skip).then((res) => {
       dispatch(setProductList(res.products));
-      console.log(res.products);
     });
   }, [pageActive, skip, dispatch]);
 
@@ -48,6 +47,7 @@ function Pagination(props) {
         </li>
         {arrPagination.fill().map((item, index) => (
           <li
+            key={index}
             className={`pagination-item ${
               pageActive === index + 1 ? 'pagination-item--active' : ''
             }`}
